@@ -6,13 +6,21 @@ functions:
   -- randomly return rock, paper or scissors
   -- getComputerChoice -- return a random string from "rock", "paper", "scissors" -- DONE
 
+  -- getHumanChoice 
+        -- take human input, parse as lowercase string
+
 */
 
-console.log("hello, world!");
+
 
 const choices = ["rock", "paper", "scissors"];
 function getComputerChoice() {
     return choices[(Math.floor(Math.random() * choices.length))];
 }
+// let x = getComputerChoice();
+// console.log(x)
 
-console.log(getComputerChoice())
+function getHumanChoice() {
+    let choice = prompt(`enter your choice: "rock", "paper" or "scissors"`).toLowerCase();
+    return choice;
+}
