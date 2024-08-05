@@ -1,25 +1,7 @@
-/* 
-pseudocode
--- played against computer
-
-functions:
-  -- randomly return rock, paper or scissors
-  -- getComputerChoice -- return a random string from "rock", "paper", "scissors" -- DONE
-
-  -- getHumanChoice 
-        -- take human input, parse as lowercase string
-
-*/
-
-
-
-
 const choices = ["rock", "paper", "scissors"];
 function getComputerChoice() {
     return choices[(Math.floor(Math.random() * choices.length))];
 }
-// let x = getComputerChoice();
-// console.log(x)
 
 function getHumanChoice() {
     const choice = prompt(`Enter your choice: "rock", "paper" or "scissors"`).toLowerCase();
@@ -30,16 +12,12 @@ function getHumanChoice() {
     }
 }
 
-
-
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     
-
     function playRound(computerChoice, humanChoice) {
         console.log(`computer choice: ${computerChoice}, human choice ${humanChoice}`);
-        
         if (computerChoice == humanChoice) {
             console.log(`It's a draw!`);
         } else if ((computerChoice == "rock" && humanChoice == "paper") || 
