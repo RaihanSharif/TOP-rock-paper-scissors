@@ -35,33 +35,28 @@ function getHumanChoice() {
 function playRound(computerChoice, humanChoice) {
     // compChoice = computerChoice;
     // humChoice = humanChoice;
+    console.log(`computer choice: ${computerChoice}, human choice ${humanChoice}`);
+    if (computerChoice == humanChoice) {
+        console.log(`It's a draw! Try again!`);
+        return playRound(getComputerChoice(), getHumanChoice());
+    }
     if(computerChoice == "rock") {
         if (humanChoice == "paper") {
-            computerScore++;
-            console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
-
-        } else if (humanChoice == "rock") {
-            console.log(`Oh no! it's tie! Try again`);
-            return playRound(computerChoice, humanChoice);
-
-        } else {
             humanScore++;
             console.log(`Human wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+        } else if (humanChoice == "scissors") {
+            computerScore++;
+            console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
         }
     } else if (computerChoice == "paper") {
         if (humanChoice == "rock") {
             computerScore++;
             console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
-            
         } else if (humanChoice == "scissors") {
             humanScore++;
             console.log(`Human wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
-            
-        } else {
-            console.log(`Oh no! it's tie! Try again`);
-            return playRound(computerChoice, humanChoice);
         }
-    } else {
+    } else {  // computer choice is scissors
         if (humanChoice == "rock") {
             humanScore++;
             console.log(`Human wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
@@ -69,12 +64,15 @@ function playRound(computerChoice, humanChoice) {
         } else if (humanChoice == "paper") {
             computerScore++;
             console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
-            
-        } else {
-            console.log(`Oh no! it's tie! Try again`);
-            return playRound(computerChoice, humanChoice);
-        }
+        } 
     }
 
+}
+
+function fiverounds() {
+    for (let i = 0; i < 5; i++) {
+        console.log(`playing round ${i}`);
+        playRound(getComputerChoice(), getHumanChoice());
+    }
 }
 
