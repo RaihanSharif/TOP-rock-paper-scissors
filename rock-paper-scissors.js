@@ -13,7 +13,10 @@ functions:
 
 
 
+let humanScore = 0;
+let computerScore = 0;
 const choices = ["rock", "paper", "scissors"];
+
 function getComputerChoice() {
     return choices[(Math.floor(Math.random() * choices.length))];
 }
@@ -28,3 +31,50 @@ function getHumanChoice() {
         return getHumanChoice();
     }
 }
+
+function playRound(computerChoice, humanChoice) {
+    // compChoice = computerChoice;
+    // humChoice = humanChoice;
+    if(computerChoice == "rock") {
+        if (humanChoice == "paper") {
+            computerScore++;
+            console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+
+        } else if (humanChoice == "rock") {
+            console.log(`Oh no! it's tie! Try again`);
+            return playRound(computerChoice, humanChoice);
+
+        } else {
+            humanScore++;
+            console.log(`Human wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+        }
+    } else if (computerChoice == "paper") {
+        if (humanChoice == "rock") {
+            computerScore++;
+            console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+            
+        } else if (humanChoice == "scissors") {
+            humanScore++;
+            console.log(`Human wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+            
+        } else {
+            console.log(`Oh no! it's tie! Try again`);
+            return playRound(computerChoice, humanChoice);
+        }
+    } else {
+        if (humanChoice == "rock") {
+            humanScore++;
+            console.log(`Human wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+
+        } else if (humanChoice == "paper") {
+            computerScore++;
+            console.log(`Computer wins! The score is computer: ${computerScore}, human: ${humanScore}.`);
+            
+        } else {
+            console.log(`Oh no! it's tie! Try again`);
+            return playRound(computerChoice, humanChoice);
+        }
+    }
+
+}
+
