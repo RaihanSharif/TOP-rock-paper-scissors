@@ -21,6 +21,10 @@ function getComputerChoice() {
 // console.log(x)
 
 function getHumanChoice() {
-    let choice = prompt(`enter your choice: "rock", "paper" or "scissors"`).toLowerCase();
-    return choice;
+    const choice = prompt(`Enter your choice: "rock", "paper" or "scissors"`).toLowerCase();
+    if (choices.includes(choice)) {
+        return choice;
+    } else {
+        return getHumanChoice();
+    }
 }
