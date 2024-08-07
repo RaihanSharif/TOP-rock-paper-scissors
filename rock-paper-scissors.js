@@ -15,7 +15,7 @@ function getHumanChoice() {
     }
 }
 
-
+let score = document.querySelector("#score-tracking");
 function playRound(computerChoice, humanChoice) {
     console.log(`computer choice: ${computerChoice}, human choice ${humanChoice}`);
     if (computerChoice == humanChoice) {
@@ -25,11 +25,20 @@ function playRound(computerChoice, humanChoice) {
         (computerChoice == "paper" && humanChoice == "scissors")
         ) {
             humanScore++
-            console.log(`human wins computer score: ${computerScore}, human score: ${humanScore}`);
+            
         } else {
             computerScore++;
-            console.log(`computer wins computer score: ${computerScore}, human score: ${humanScore}`);           
-    }   
+    }
+    score.textContent = `Human: ${humanScore} || computer: ${computerScore}`; 
+    if (humanScore === 5) {
+        score.textContent = `Human wins ${humanScore} to ${computerScore}. WELL PLAYED!`; 
+        humanScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 5) {
+        score.textContent = `Computer wins ${computerScore} to ${humanScore}. Better luck next time`; 
+        playerScore = 0;
+        computerScore = 0;
+    } 
 }
 
 
@@ -41,15 +50,12 @@ usrChoiceOptions.addEventListener('click', (event) => {
 
     switch(target.id) {
         case 'rock':
-            console.log("User selected rock");
             playRound(computerChoice, 'rock');
             break;
         case 'paper':
-            console.log("User selected paper");
             playRound(computerChoice, 'paper');
             break;
         case 'scissors':
-            console.log("User selected scissors");
             playRound(computerChoice, 'scissors');
             break;
     }
